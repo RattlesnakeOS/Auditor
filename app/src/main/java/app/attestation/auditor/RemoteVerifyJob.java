@@ -31,8 +31,8 @@ public class RemoteVerifyJob extends JobService {
     private static final int PERIODIC_JOB_ID = 0;
     private static final int FIRST_RUN_JOB_ID = 1;
     static final String DOMAIN = "attestation.app";
-    private static final String CHALLENGE_URL = "https://" + DOMAIN + "/challenge";
-    private static final String VERIFY_URL = "https://" + DOMAIN + "/verify";
+    private static final String CHALLENGE_URL = "https://" + DOMAIN + "/api/challenge";
+    private static final String VERIFY_URL = "https://" + DOMAIN + "/api/verify";
     private static final int CONNECT_TIMEOUT = 60000;
     private static final int READ_TIMEOUT = 60000;
     private static final int MIN_INTERVAL = 60 * 60;

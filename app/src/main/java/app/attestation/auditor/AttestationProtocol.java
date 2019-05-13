@@ -470,11 +470,13 @@ class AttestationProtocol {
             throw new GeneralSecurityException("wrong number of attestation app signature digests");
         }
         final String signatureDigest = BaseEncoding.base16().encode(signatureDigests.get(0));
-        if (!ATTESTATION_APP_SIGNATURE_DIGEST_RELEASE.equals(signatureDigest)) {
-            if (!BuildConfig.DEBUG || !ATTESTATION_APP_SIGNATURE_DIGEST_DEBUG.equals(signatureDigest)) {
-                throw new GeneralSecurityException("wrong attestation app signature digest");
-            }
-        }
+        Log.w(TAG, "signatureDigest=" + signatureDigest);
+//        // TODO: add this back
+//        if (!ATTESTATION_APP_SIGNATURE_DIGEST_RELEASE.equals(signatureDigest)) {
+//            if (!BuildConfig.DEBUG || !ATTESTATION_APP_SIGNATURE_DIGEST_DEBUG.equals(signatureDigest)) {
+//                throw new GeneralSecurityException("wrong attestation app signature digest");
+//            }
+//        }
 
         final AuthorizationList teeEnforced = attestation.getTeeEnforced();
 
@@ -519,6 +521,7 @@ class AttestationProtocol {
 
         final int verifiedBootState = rootOfTrust.getVerifiedBootState();
         final String verifiedBootKey = BaseEncoding.base16().encode(rootOfTrust.getVerifiedBootKey());
+        Log.w(TAG, "verifiedBootKey=" + verifiedBootKey);
         final DeviceInfo device;
         final boolean stock;
         if (verifiedBootState == RootOfTrust.KM_VERIFIED_BOOT_SELF_SIGNED) {
