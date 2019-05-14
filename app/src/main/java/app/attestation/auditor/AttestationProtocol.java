@@ -471,12 +471,11 @@ class AttestationProtocol {
         }
         final String signatureDigest = BaseEncoding.base16().encode(signatureDigests.get(0));
         Log.w(TAG, "signatureDigest=" + signatureDigest);
-//        // TODO: add this back
-//        if (!ATTESTATION_APP_SIGNATURE_DIGEST_RELEASE.equals(signatureDigest)) {
-//            if (!BuildConfig.DEBUG || !ATTESTATION_APP_SIGNATURE_DIGEST_DEBUG.equals(signatureDigest)) {
-//                throw new GeneralSecurityException("wrong attestation app signature digest");
-//            }
-//        }
+        if (!ATTESTATION_APP_SIGNATURE_DIGEST_RELEASE.equals(signatureDigest)) {
+            if (!BuildConfig.DEBUG || !ATTESTATION_APP_SIGNATURE_DIGEST_DEBUG.equals(signatureDigest)) {
+                throw new GeneralSecurityException("wrong attestation app signature digest");
+            }
+        }
 
         final AuthorizationList teeEnforced = attestation.getTeeEnforced();
 
